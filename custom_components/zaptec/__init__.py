@@ -11,6 +11,15 @@ from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryError, Co
 from homeassistant.helpers import device_registry as dr, entity_registry as er
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
+from pyzaptec import (
+    AuthenticationError,
+    Installation,
+    RequestConnectionError,
+    RequestTimeoutError,
+    Zaptec,
+    ZaptecApiError,
+)
+
 from .const import (
     CONF_CHARGERS,
     CONF_MANUAL_SELECT,
@@ -25,14 +34,6 @@ from .const import (
 from .coordinator import ZaptecUpdateCoordinator, ZaptecUpdateOptions
 from .manager import ZaptecConfigEntry, ZaptecManager
 from .services import async_setup_services, async_unload_services
-from .zaptec import (
-    AuthenticationError,
-    Installation,
-    RequestConnectionError,
-    RequestTimeoutError,
-    Zaptec,
-    ZaptecApiError,
-)
 
 _LOGGER = logging.getLogger(__name__)
 

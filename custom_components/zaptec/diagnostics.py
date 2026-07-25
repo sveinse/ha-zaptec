@@ -9,8 +9,9 @@ from typing import Any
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import device_registry as dr, entity_registry as er
 
+from pyzaptec import Redactor, Zaptec, ZaptecBase
+
 from .manager import ZaptecConfigEntry, ZaptecManager
-from .zaptec import Redactor, Zaptec, ZaptecBase
 
 _LOGGER = logging.getLogger(__name__)
 

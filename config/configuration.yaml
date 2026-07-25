@@ -19,3 +19,4 @@ logger:
   logs:
     custom_components.zaptec: debug
     azure.servicebus: warning
+    pyzaptec: debug

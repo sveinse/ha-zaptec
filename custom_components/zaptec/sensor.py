@@ -16,9 +16,10 @@ from homeassistant.components.sensor import (
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from pyzaptec import ZCONST, get_ocmf_max_reader_value
+
 from .entity import ZaptecBaseEntity
 from .manager import ZaptecConfigEntry, ZaptecEntityDescription
-from .zaptec import ZCONST, get_ocmf_max_reader_value
 
 _LOGGER = logging.getLogger(__name__)
 

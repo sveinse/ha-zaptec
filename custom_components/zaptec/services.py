@@ -12,8 +12,9 @@ from homeassistant.helpers import device_registry as dr, entity_registry as er
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 
+from pyzaptec import Charger, Installation
+
 from .const import DOMAIN
-from .zaptec import Charger, Installation
 
 if TYPE_CHECKING:
     from .coordinator import ZaptecUpdateCoordinator

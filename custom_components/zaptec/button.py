@@ -11,9 +11,10 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from pyzaptec import Charger
+
 from .entity import ZaptecBaseEntity
 from .manager import ZaptecConfigEntry, ZaptecEntityDescription
-from .zaptec import Charger
 
 _LOGGER = logging.getLogger(__name__)
 

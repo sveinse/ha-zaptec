@@ -7,7 +7,7 @@ import aiohttp
 import pytest
 
 from custom_components.zaptec.diagnostics import _get_diagnostics
-from custom_components.zaptec.zaptec.api import Zaptec
+from pyzaptec import Zaptec
 
 _LOGGER = logging.getLogger(__name__)
 

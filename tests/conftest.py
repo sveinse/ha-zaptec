@@ -4,8 +4,7 @@ import asyncio
 import os
 
 import pytest
-
-from custom_components.zaptec.zaptec.api import Zaptec
+from pyzaptec import Zaptec
 
 
 @pytest.fixture(scope="session")

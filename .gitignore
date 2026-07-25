@@ -22,11 +22,14 @@ ehthumbs.db
 ehthumbs_vista.db
 Desktop.ini
 $RECYCLE.BIN/
+.DS_Store
 
 # Python virtual environments
 venv*/
 .venv*/
 /.python-version
+.devcontainer-lock.json
+uv.lock
 
 # Zaptec files
 constant.json

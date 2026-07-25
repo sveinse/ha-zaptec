@@ -43,14 +43,12 @@ jobs:
         with:
           args: format --diff
           src: "."
-          version-file: "requirements.txt"
 
       - name: Run ruff check
         uses: astral-sh/ruff-action@0ce1b0bf8b818ef400413f810f8a11cdbda0034b # v4.0.0
         with:
           args: check
           src: "."
-          version-file: "requirements.txt"
 
   manifest-requirements:
     name: Manifest requirements validation
@@ -83,7 +81,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.13", "3.14"] # If 3.13-tests start failing, we need to consider setting HA2026.3 as the minimum version.
+        python-version: ["3.14"]
     steps:
       - name: Checkout the repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -93,18 +91,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Revert HA requirement to last version supporting Python ${{ matrix.python-version }}
-        if: matrix.python-version == '3.13'
-        run: |
-          sed -i 's/^homeassistant==.*/homeassistant==2026.2.3/' requirements.txt
-
       - name: Install requirements
         run: |
-          pip install \
-              -r requirements.txt \
-              -r requirements_test.txt
+          pip install -e .[dev]
 
       - name: Tests suite
         run: |
           pytest --cov=./custom_components/zaptec --cov-branch
-

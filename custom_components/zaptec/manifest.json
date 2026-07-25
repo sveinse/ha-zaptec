@@ -7,14 +7,12 @@
   ],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/custom-components/zaptec",
+  "documentation": "https://github.com/ha-zaptec-community/ha-zaptec",
   "integration_type": "hub",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/custom-components/zaptec/issues",
+  "issue_tracker": "https://github.com/ha-zaptec-community/ha-zaptec/issues",
   "requirements": [
-    "azure-servicebus==7.14.3",
-    "pydantic>=2.11.7,<2.14",
-    "aiolimiter==1.2.1"
+    "pyzaptec==0.8.7"
   ],
   "version": "0.8.7"
 }

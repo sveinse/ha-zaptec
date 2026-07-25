@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
 
 cd "$(dirname "$0")/.."
 
-python3 -m pip install --requirement requirements.txt --requirement requirements_test.txt
+# Fix ownership of the mounted volume using sudo
+if [ "${REMOTE_CONTAINERS}" = "true" ] || [ "${CODESPACES}" = "true" ]; then
+    sudo chown -R vscode:vscode /home/vscode/.cache/uv
+fi
+
+uv sync --all-extras
+
+# If the pyzaptec directory exists, add it as an editable package
+if [[ -d "pyzaptec" ]]; then
+    uv add --editable ./pyzaptec
+fi

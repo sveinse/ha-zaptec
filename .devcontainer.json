@@ -14,6 +14,16 @@
     "mounts": [
         // To add support for git with ssh in the dev container, uncomment the line below.
         // "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind"
+
+        // If you want to edit the pyzaptec repository in your local project,
+        // you can either check it out in the workspace folder as "pyzaptec" or
+        // you can mount a local copy of the pyzaptec repository into the dev container.
+        // To do the latter, uncomment the line below and replace "/path/to/pyzaptec" with
+        // the path to your local copy of the pyzaptec repository.
+        // "source=/path/to/pyzaptec,target=/workspaces/ha-zaptec/pyzaptec,type=bind"
+
+        // Enable caching of uv dependencies between dev container rebuilds.
+        "source=uv-cache-volume,target=/home/vscode/.cache/uv,type=volume"
     ],
     "customizations": {
         "vscode": {
@@ -22,8 +32,7 @@
                 "github.vscode-pull-request-github",
                 "ms-python.python",
                 "ms-python.vscode-pylance",
-                "ryanluker.vscode-coverage-gutters",
-                "visualstudioexptteam.vscodeintellicode"
+                "ryanluker.vscode-coverage-gutters"
             ],
             "settings": {
                 "[python]": {
@@ -36,16 +45,23 @@
                 "files.eol": "\n",
                 "files.trimTrailingWhitespace": true,
                 "python.analysis.autoImportCompletions": true,
-                "python.analysis.extraPaths": [
-                    "/home/vscode/.local/lib/python3.14/site-packages"
-                ],
                 "python.analysis.typeCheckingMode": "basic",
-                "python.defaultInterpreterPath": "/usr/local/bin/python"
             }
         }
     },
+    "containerEnv": {
+        // Tells uv exactly where to install dependencies on uv sync
+        "VIRTUAL_ENV": "/home/vscode/.local",
+        // Direct uv to use the persistent volume path
+        "UV_CACHE_DIR": "/home/vscode/.cache/uv",
+        // Prevent hard-linking errors across different filesystems
+        "UV_LINK_MODE": "copy",
+        // Set uv project environment outside the container workspace folder
+        "UV_PROJECT_ENVIRONMENT": "/home/vscode/.local"
+    },
     "remoteUser": "vscode",
     "features": {
+        "ghcr.io/devcontainers-extra/features/uv:1": {},
         "ghcr.io/devcontainers-extra/features/apt-packages:1": {
             "packages": [
                 "ffmpeg",

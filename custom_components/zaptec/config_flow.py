@@ -10,10 +10,7 @@ from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.selector import TextSelector, TextSelectorConfig, TextSelectorType
-import voluptuous as vol
-
-from .const import CONF_CHARGERS, CONF_MANUAL_SELECT, CONF_PREFIX, DOMAIN
-from .zaptec import (
+from pyzaptec import (
     AuthenticationError,
     Charger,
     RequestConnectionError,
@@ -22,6 +19,9 @@ from .zaptec import (
     RequestTimeoutError,
     Zaptec,
 )
+import voluptuous as vol
+
+from .const import CONF_CHARGERS, CONF_MANUAL_SELECT, CONF_PREFIX, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -48,7 +48,7 @@ class ZaptecFlowHandler(ConfigFlow, domain=DOMAIN):
                 client=async_get_clientsession(self.hass),
             )
             await self.zaptec.login()
-        except (RequestConnectionError, RequestTimeoutError):
+        except RequestConnectionError, RequestTimeoutError:
             errors["base"] = "cannot_connect"
         except AuthenticationError:
             errors["base"] = "invalid_auth"
@@ -80,9 +80,9 @@ class ZaptecFlowHandler(ConfigFlow, domain=DOMAIN):
                 # Get all chargers
                 chargers = list(self.zaptec.chargers)
 
-        except (RequestConnectionError, RequestTimeoutError, RequestDataError):
+        except RequestConnectionError, RequestTimeoutError, RequestDataError:
             errors["base"] = "cannot_connect"
-        except (AuthenticationError, RequestRetryError):
+        except AuthenticationError, RequestRetryError:
             errors["base"] = "invalid_auth"
         except Exception:
             _LOGGER.exception("Unexpected exception")
