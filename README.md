@@ -1,5 +1,13 @@
 ## Zaptec EV charger component for Home Assistant
 
+> [!NOTE]
+> **Disclaimer:** This is an independent, community-driven open-source project. It is not affiliated with, authorized, maintained, sponsored, or endorsed by Zaptec AS or any of its affiliates. All product and company names are trademarks™ or registered® trademarks of their respective holders.
+
+> [!CAUTION]
+> This project is a concept test forked from the https://github.com/custom-components/zaptec project. It is not yet ready for production use.
+
+-----
+
 [![hacs][hacsbadge]][hacs]
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]][license]
