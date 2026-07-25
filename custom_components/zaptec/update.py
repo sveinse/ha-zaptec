@@ -15,7 +15,6 @@ from homeassistant.components.update import (
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-
 from pyzaptec import Charger
 
 from .entity import ZaptecBaseEntity

@@ -5,9 +5,9 @@ import logging
 
 import aiohttp
 import pytest
+from pyzaptec import Zaptec
 
 from custom_components.zaptec.diagnostics import _get_diagnostics
-from pyzaptec import Zaptec
 
 _LOGGER = logging.getLogger(__name__)
 

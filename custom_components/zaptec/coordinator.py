@@ -11,7 +11,6 @@ from typing import TYPE_CHECKING
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.debounce import Debouncer
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
-
 from pyzaptec import Charger, Installation, Zaptec, ZaptecApiError, ZaptecBase
 
 from .const import (

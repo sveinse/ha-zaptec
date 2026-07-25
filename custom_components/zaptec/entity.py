@@ -9,7 +9,6 @@ from typing import Any
 from homeassistant.core import callback
 from homeassistant.helpers.entity import DeviceInfo, EntityDescription
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
-
 from pyzaptec import MISSING, Missing, ZaptecBase
 
 from .const import KEYS_TO_SKIP_ENTITY_AVAILABILITY_CHECK

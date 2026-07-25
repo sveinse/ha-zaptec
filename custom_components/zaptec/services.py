@@ -10,9 +10,8 @@ from homeassistant.core import HomeAssistant, ServiceCall
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import device_registry as dr, entity_registry as er
 import homeassistant.helpers.config_validation as cv
-import voluptuous as vol
-
 from pyzaptec import Charger, Installation
+import voluptuous as vol
 
 from .const import DOMAIN
 
